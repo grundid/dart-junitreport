@@ -14,7 +14,7 @@ main(List<String> args) async {
   var arguments = parseArguments(args);
 
   Stream<String> lines =
-      arguments.source.transform(UTF8.decoder).transform(new LineSplitter());
+      arguments.source.transform(utf8.decoder).transform(new LineSplitter());
 
   try {
     var report = await createReport(arguments, lines);
@@ -30,7 +30,7 @@ main(List<String> args) async {
 
 Future<Report> createReport(Arguments arguments, Stream<String> lines) async {
   var processor = new Processor(timestamp: arguments.timestamp);
-  await for (String line in lines) processor.process(JSON.decode(line));
+  await for (String line in lines) processor.process(json.decode(line));
   return processor.report;
 }
 
